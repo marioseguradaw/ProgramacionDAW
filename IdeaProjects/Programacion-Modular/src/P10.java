@@ -12,67 +12,38 @@ public class P10 {
     }
 
     private void inicio() {
-        int impTurismo=0,impAutobus=0,impMoto=0,opcion;
-        String resultado="",aux,impFinal;
+        int opcion=0,menu;
 
+        imprimirPantalla("1.- Turismo\n2.- Autobús\n3.- Motocicleta\n");
+        menu = getMenu(opcion);
+
+        imprimirPantalla("Elija una opción [1-3]: ");
         opcion = getOpcion();
-        opcion = codificarOpcion(impMoto,impTurismo,impAutobus);
-        aux = rellenarOpcion(opcion);
-        impFinal = getImpuesto(impMoto,impTurismo,impAutobus);
-
-        imprimirPantalla(resultado);
+        obtenerImpuesto(opcion);
     }
 
-    private String getImpuesto(int impMoto, int impTurismo, int impAutobus) {
-        int opcion=0;
-        String impFinal;
-
-        impMoto = 300;
-        impAutobus = 3000;
-        impTurismo = 500;
-
+    private void obtenerImpuesto(int opcion) {
         if (opcion==1){
-            impFinal = "Deberá pagar un impuesto de "+impTurismo+"€\n";
+            imprimirPantalla("El impuesto a pagar será de 500€.\n");
         } else if (opcion==2) {
-            impFinal = "Deberá pagar un impuesto de "+impAutobus+"€\n";
+            imprimirPantalla("El impuesto a pagar será de 3000€.\n");
+        } else if (opcion==3) {
+            imprimirPantalla("El impuesto a pagar será de 300€.\n");
         }else {
-            impFinal = "Deberá pagar un impuesto de "+impMoto+"€\n";
+            imprimirPantalla("Opción no existente. Por favor, escoja una del 1 al 3.\n");
         }
-        return impFinal;
     }
 
-    private String rellenarOpcion(int opcion) {
-        Scanner sc = new Scanner(System.in);
+    private int getMenu(int opcion) {
+        return opcion;
+    }
 
-        imprimirPantalla("1.- Turismo\n");
-        imprimirPantalla("2.- Autobús\n");
-        imprimirPantalla("3.- Motocicleta\n");
-        return sc.next();
+    private void imprimirPantalla(String s) {
+        System.out.print(s);
     }
 
     private int getOpcion() {
         Scanner sc = new Scanner(System.in);
-
-        imprimirPantalla("Eliga una opción [1-3]: ");
         return sc.nextInt();
-    }
-
-    private int codificarOpcion(int impMoto, int impTurismo, int impAutobus) {
-        int opcion=0;
-        String resultado="";
-
-        switch (opcion){
-            case 1: resultado = "1: Turismo\n";
-                break;
-            case 2: resultado = "2: Autobús\n";
-                break;
-            default: resultado = "3: Motocicleta\n";
-        }
-        return opcion;
-    }
-
-
-    private void imprimirPantalla(String cadena) {
-        System.out.print(cadena);
     }
 }
