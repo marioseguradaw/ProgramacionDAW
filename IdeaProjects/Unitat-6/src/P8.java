@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class P8 {
+public class P8
+{
     public static void main(String[] args) {
         P8 programa = new P8();
         programa.inicio();
